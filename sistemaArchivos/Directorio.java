@@ -2,6 +2,8 @@ package sistemaArchivos;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import sistemaArchivos.filtros.Filtro;
 
@@ -67,6 +69,12 @@ public class Directorio extends Elemento{
 			ArrayList<Elemento> listaHija = e.buscarElementos(filtro);
 			resultado.addAll(listaHija);
 		}
+		return resultado;
+	}
+	
+	public ArrayList<Elemento> buscarElementosOrdenados(Filtro filtro, Comparator<Elemento> comparador) {
+		ArrayList<Elemento> resultado = this.buscarElementos(filtro);
+		Collections.sort(resultado,comparador);
 		return resultado;
 	}
 }

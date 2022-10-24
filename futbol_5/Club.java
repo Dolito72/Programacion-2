@@ -29,7 +29,7 @@ public class Club {
 		}
 	}
 	
-	public ArrayList<Socio> ListadoSocios(Filtro f, Comparator<Socio> comp){
+	public ArrayList<Socio> ListadoSociosOrdenados(Filtro f, Comparator<Socio> comp){
 		ArrayList<Socio> resultado = new ArrayList<>();
 		for (Socio s:socios){
 			if (f.cumple(s)){
@@ -40,5 +40,4 @@ public class Club {
 		return resultado;
 	
 	}
-	
 }

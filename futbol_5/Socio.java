@@ -66,6 +66,7 @@ public class Socio{
 		}
 		return false;
 	}
+	
 	public int cantidadTotalAlquilerCancha(String cancha){
 		int cantidadTotal = 0;
 		for (Alquiler a:alquileres){
