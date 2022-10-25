@@ -1,5 +1,4 @@
-package filtro;
-
+package farmacia.filtros;
 import farmacia.Medicamento;
 
 
@@ -16,3 +15,4 @@ public class FiltroPorNombre extends Filtro {
 	}
 	
 }
+

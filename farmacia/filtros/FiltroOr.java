@@ -1,5 +1,4 @@
-package filtro;
-
+package farmacia.filtros;
 import farmacia.Medicamento;
 
 public class FiltroOr extends Filtro {

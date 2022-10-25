@@ -1,9 +1,9 @@
 package saltarin.filtros;
 
-import viajes.ElementoViaje;
+import saltarin.Elemento;
 
 public abstract class Filtro {
 
-	public abstract boolean cumple(ElementoViaje viaje);
+	public abstract boolean cumple(Elemento e);
 	
 }

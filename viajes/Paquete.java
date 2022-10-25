@@ -10,7 +10,8 @@ import viajes.filtros.Filtro;
 public class Paquete extends ElementoViaje {
 	ArrayList<ElementoViaje> viajes;
 	
-	public Paquete(int id, LocalDate fechaPago, String destino, String origen, int costo, String alojamiento, int cantidadPasajeros){
+	public Paquete(int id, LocalDate fechaPago, String destino, String origen, int costo, String alojamiento, 
+	int cantidadPasajeros){
 		super(id, fechaPago, destino, origen, costo, alojamiento, cantidadPasajeros);
 		this.viajes = new ArrayList<>();
 	}
@@ -26,9 +27,13 @@ public class Paquete extends ElementoViaje {
 	@Override
 	public LocalDate getFechaPago() {
 		LocalDate ultimaFechaPago = null;
-		for (ElementoViaje e:viajes)
-			if (e.getFechaPago().isAfter(ultimaFechaPago))
-					ultimaFechaPago = e.getFechaPago();
+		for (ElementoViaje e:viajes){
+			LocalDate fechaHija = e.getFechaPago();
+			if (fechaHija == null)
+				return null;
+			if (ultimaFechaPago == null || fechaHija.isAfter(ultimaFechaPago))
+					ultimaFechaPago = fechaHija;
+		}
 		return ultimaFechaPago;
 	}
 
@@ -55,25 +60,16 @@ public class Paquete extends ElementoViaje {
 		return alojamiento;
 	}
 
-	@Override
-	public int compareTo(LocalDate o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	public  ArrayList<ElementoViaje> ListadoViajes(Filtro f, Comparator comp){
+	public  ArrayList<ElementoViaje> buscarViajes(Filtro f){
 		ArrayList<ElementoViaje> resultado = new ArrayList<>();
-			for (ElementoViaje v:viajes)
-				if (f.cumple(v))
+			if (f.cumple(this))
 				resultado.add(this);
 			else
-				for (ElementoViaje e:viajes)
-					if (f.cumple(e))
-						resultado.add(e);
-		Collections.sort(resultado, comp);
+				for (ElementoViaje e:viajes){
+					ArrayList<ElementoViaje> resultadoHijo = e.buscarViajes(f);
+					resultado.addAll(resultadoHijo);
+				}
+		
 		return resultado;
 	}
-
-
 }

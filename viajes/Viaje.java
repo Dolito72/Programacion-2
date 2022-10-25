@@ -7,17 +7,12 @@ import java.util.Comparator;
 import viajes.filtros.Filtro;
 import viajes.comparadores.*;
 public class Viaje extends ElementoViaje{
-	private double descuento;
-	
-	public Viaje(int id, LocalDate fechaPago, String destino, String origen, int costo, double descuento, String alojamiento, int cantidadPasajeros) {
+
+	public Viaje(int id, LocalDate fechaPago, String destino, String origen, int costo,String alojamiento, int cantidadPasajeros) {
 		super(id, fechaPago, destino, origen, id, alojamiento, cantidadPasajeros);
-		this.descuento = descuento;
+		
 	}
 
-	public double getDescuento(){
-		return descuento;
-	}
-	
 	@Override
 	public LocalDate getFechaPago() {
 		return fechaPago;
@@ -42,10 +37,6 @@ public class Viaje extends ElementoViaje{
 	}
 	@Override
 	public int getCosto() {
-		LocalDate inicio = null, fin = null;
-		if (this.entreFechas(inicio, fin))
-			return (int) (this.costo - this.costo * this.getDescuento() / 100);
-		else
 		return costo;
 	}
 
@@ -53,18 +44,15 @@ public class Viaje extends ElementoViaje{
 	public String getAlojamiento() {
 		return alojamiento;
 	}
-
-	public  ArrayList<ElementoViaje> ListadoViajes(Filtro f, Comparator p){
+	@Override
+	public  ArrayList<ElementoViaje> buscarViajes(Filtro f){
 		ArrayList<ElementoViaje> resultado = new ArrayList<>();
 			if (f.cumple(this))
 				resultado.add(this);
-			
 		return resultado;
-	}
-	@Override
-	public int compareTo(LocalDate o) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
+
+
+

@@ -1,5 +1,4 @@
-
-package filtro;
+package farmacia.filtros;
 
 import farmacia.Medicamento;
 

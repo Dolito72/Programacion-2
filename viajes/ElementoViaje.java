@@ -2,12 +2,13 @@ package viajes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 import viajes.filtros.Filtro;
 import viajes.comparadores.*;
 
-public abstract class ElementoViaje implements Comparable<LocalDate>{
+public abstract class ElementoViaje {
 	protected int id;
 	protected LocalDate fechaPago;
 	protected String destino;
@@ -47,7 +48,14 @@ public abstract class ElementoViaje implements Comparable<LocalDate>{
 	public abstract String getDestino();
 	public abstract String getOrigen();
 	public abstract int getCosto();
-	public abstract ArrayList<ElementoViaje> ListadoViajes(Filtro f, Comparator p);
+	public abstract ArrayList<ElementoViaje> buscarViajes(Filtro f);
+	
+	public ArrayList<ElementoViaje>buscarOrdenado(Filtro f,Comparator comp){
+		ArrayList<ElementoViaje> resultado = this.buscarViajes(f);
+		Collections.sort(resultado, comp);
+		return resultado;
+		
+	}
 	
 	
 	

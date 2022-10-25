@@ -13,7 +13,7 @@ package farmacia;
 
 import java.util.ArrayList;
 
-import filtro.Filtro;
+import farmacia.filtros.*;
 
 public class Farmacia {
 	private ArrayList<Medicamento> medicamentos;
