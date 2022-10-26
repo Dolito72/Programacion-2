@@ -20,14 +20,12 @@ public class Kit extends Elemento {
 	@Override
 	public int getVolumen() {
 		int maximo = 0;
-		
 		for (int index = 0; index < this.elementos.size(); index++) {
 			Elemento elemHijo = this.elementos.get(index);
 			int volHijo = elemHijo.getVolumen();
 			if (volHijo > maximo)
 				maximo = volHijo;
 		}
-		
 		return maximo;
 	}
 
@@ -42,19 +40,16 @@ public class Kit extends Elemento {
 	@Override
 	public int getPrecio() {
 		int total = 0;
-		
 		for (int index = 0; index < this.elementos.size(); index++) {
 			Elemento elemHijo = this.elementos.get(index);
 			total += elemHijo.getPrecio();
 		}
-		
 		return total;
 	}
 
 	@Override
 	public int getCantidadProductos() {
 		int cantidad = 0;
-		
 		for (int index = 0; index < this.elementos.size(); index++) {
 			Elemento elemHijo = this.elementos.get(index);
 			cantidad += elemHijo.getCantidadProductos();

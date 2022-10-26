@@ -22,7 +22,6 @@ public class Noticia extends ElementoNoticia {
 		this.palabrasClaves.add(p);
 	}
 	
-	
 	public String getTitulo() {
 		return titulo;
 	}

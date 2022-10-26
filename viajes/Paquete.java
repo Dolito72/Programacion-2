@@ -26,7 +26,7 @@ public class Paquete extends ElementoViaje {
 	}
 	@Override
 	public LocalDate getFechaPago() {
-		LocalDate ultimaFechaPago = null;
+		LocalDate ultimaFechaPago = viajes.get(0).getFechaPago();
 		for (ElementoViaje e:viajes){
 			LocalDate fechaHija = e.getFechaPago();
 			if (fechaHija == null)
