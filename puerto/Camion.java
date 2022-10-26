@@ -1,7 +1,7 @@
 package puerto;
 
 //Puede implementar muchas interfaces! Pero solo puede extender de una clase
-public class Camion extends Vehiculo implements Comparable<Camion>, ElementoComparable {
+public class Camion implements Comparable<Camion> {
 
 	private String patente;
 	private int modelo;
@@ -31,18 +31,6 @@ public class Camion extends Vehiculo implements Comparable<Camion>, ElementoComp
 	
 	public String toString() {
 		return this.patente + ", " + this.fechaCarga;
-	}
-
-	@Override
-	public boolean esMayor(Object o) {
-		Camion aux = (Camion) o;
-		return this.getFechaCarga1() < aux.getFechaCarga1();
-	}
-
-	@Override
-	public boolean esMenor(Object o) {
-		Camion aux = (Camion) o;
-		return this.getFechaCarga1() > aux.getFechaCarga1();
 	}
 
 	@Override

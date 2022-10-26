@@ -92,4 +92,12 @@ public class Noticia extends ElementoNoticia {
 		return this.getTexto().length();
 	}
 
+
+	public ArrayList<String> mapaDeSitio() {
+		ArrayList<String> respuesta = new ArrayList<>();
+		respuesta.add(this.getLink());
+		return respuesta;
+	}
+	
+	
 }

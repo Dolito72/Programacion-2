@@ -1,6 +1,6 @@
 package puerto;
 
-public class Barco implements Comparable<Barco>, ElementoComparable {
+public class Barco implements Comparable<Barco> {
 
 	private String nombre;
 	private String capitan;
@@ -30,18 +30,6 @@ public class Barco implements Comparable<Barco>, ElementoComparable {
 	
 	public String toString() {
 		return this.nombre + ", " + this.capacidad;
-	}
-
-	@Override
-	public boolean esMayor(Object o) {
-		Barco aux = (Barco) o;
-		return this.getCapacidad() > aux.getCapacidad(); 
-	}
-
-	@Override
-	public boolean esMenor(Object o) {
-		Barco aux = (Barco) o;
-		return this.getCapacidad() < aux.getCapacidad(); 
 	}
 
 	@Override

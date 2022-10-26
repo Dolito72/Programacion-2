@@ -1,6 +1,7 @@
 package sitioWebNoticias;
 
 import java.util.ArrayList;
+
 import sitioWebNoticias.filtros.Filtro;
 
 public class Categoria extends ElementoNoticia {
@@ -63,15 +64,18 @@ public class Categoria extends ElementoNoticia {
 		}
 		return copiaCategoria;
 	}
-
-	@Override 
-	public String toString() {
-		String resultado = this.getNombre() + "\\";
-		for (ElementoNoticia e:noticias)
-			resultado += e.toString();
+	@Override
+	public ArrayList<String> mapaDeSitio() {
+		ArrayList<String> resultado = new ArrayList<>();
+		resultado.add(this.getNombre()+ "\\" );
+		for (ElementoNoticia e: noticias) {
+			ArrayList<String> resultadoHijo = e.mapaDeSitio();
+			for (String s: resultadoHijo)
+				resultado.add(this.getNombre() + "\\" + s);
+		}
 		return resultado;
 	}
-
+	
 	@Override
 	public ArrayList<ElementoNoticia> listadoNoticias(Filtro f) {
 		ArrayList<ElementoNoticia> resultado =  new ArrayList<>();
@@ -79,6 +83,11 @@ public class Categoria extends ElementoNoticia {
 			if (f.cumple((Noticia) e))
 				resultado.add(e);
 		return resultado;
+	}
+
+	@Override
+	public String toString() {
+		return this.getNombre();
 	}
 
 }

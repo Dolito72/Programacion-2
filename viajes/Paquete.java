@@ -20,7 +20,7 @@ public class Paquete extends ElementoViaje {
 		if ((viajes.isEmpty()) && (viaje.getCantidadPasajeros()== this.getCantidadPasajeros()))
 			viajes.add(viaje);
 		else 
-			if ((viaje.getCantidadPasajeros()== this.getCantidadPasajeros()) && (viaje.getOrigen().equals(this.getDestino()))){
+			if ((viaje.getCantidadPasajeros()== this.getCantidadPasajeros()) && (viaje.getOrigen().equals(viajes.get(viajes.size()-1).getDestino()))){
 				viajes.add(viaje);
 			}
 	}
