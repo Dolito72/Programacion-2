@@ -57,8 +57,8 @@ public class SeguroTemporal extends Seguro {
 	}
 
 	@Override
-	public int numeroPoliza() {
-		return contenido.numeroPoliza();
+	public int getNumeroPoliza() {
+		return contenido.getNumeroPoliza();
 	}
 
 	@Override
@@ -69,8 +69,8 @@ public class SeguroTemporal extends Seguro {
 	}
 
 	@Override
-	public ArrayList<Seguro> buscarSeguros(Filtro f) {
-		ArrayList<Seguro> resultado = new ArrayList<>();
+	public ArrayList<SeguroSimple> buscarSeguros(Filtro f) {
+		ArrayList<SeguroSimple> resultado = new ArrayList<>();
 		if (this.estaVigente())
 		   resultado.addAll(contenido.buscarSeguros(f));
 		return resultado;
@@ -80,5 +80,6 @@ public class SeguroTemporal extends Seguro {
 	public int getDni() {
 		return this.contenido.getDni();
 	}
+
 
 }

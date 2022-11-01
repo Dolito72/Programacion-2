@@ -25,28 +25,28 @@ public class SeguroIntegrador extends Seguro {
 	}
 
 	@Override
-	public int numeroPoliza() {
+	public int getNumeroPoliza() {
 		int numeroMayor = 0;
 		for (Seguro s:seguros)
-			if (s.numeroPoliza() > numeroMayor){
-				numeroMayor = s.numeroPoliza();
+			if (s.getNumeroPoliza() > numeroMayor){
+				numeroMayor = s.getNumeroPoliza();
 			}
 		return numeroMayor;
 	}
 
 	@Override
 	public double getCosto() {
-		int suma = 0;
+		double suma = 0.0;
 		for (Seguro s: seguros)
 			suma += s.getCosto();
 		return suma;
 	}
 	
 	@Override
-	public ArrayList<Seguro> buscarSeguros(Filtro f) {
-		ArrayList<Seguro>resultado = new ArrayList<>();
+	public ArrayList<SeguroSimple> buscarSeguros(Filtro f) {
+		ArrayList<SeguroSimple>resultado = new ArrayList<>();
 		for (Seguro s:seguros){
-			ArrayList<Seguro> seguroHijo = s.buscarSeguros(f);
+			ArrayList<SeguroSimple> seguroHijo = s.buscarSeguros(f);
 			resultado.addAll(seguroHijo);
 		}
 		return resultado;

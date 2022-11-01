@@ -2,6 +2,7 @@ package sitioWebNoticias;
 
 import java.util.ArrayList;
 
+import aseguradora.Seguro;
 import sitioWebNoticias.filtros.Filtro;
 
 public class Categoria extends ElementoNoticia {
@@ -20,7 +21,6 @@ public class Categoria extends ElementoNoticia {
 	public void addNoticia (ElementoNoticia e){
 		this.noticias.add(e);
 	}
-	
 	
 	public String getNombre() {
 		return nombre;
@@ -79,12 +79,13 @@ public class Categoria extends ElementoNoticia {
 	@Override
 	public ArrayList<ElementoNoticia> listadoNoticias(Filtro f) {
 		ArrayList<ElementoNoticia> resultado =  new ArrayList<>();
-		for (ElementoNoticia e:noticias)
-			if (f.cumple((Noticia) e))
-				resultado.add(e);
+		for (ElementoNoticia e:noticias){
+			ArrayList<ElementoNoticia> resHijo = e.listadoNoticias(f);
+				resultado.addAll(resHijo);
+		}
 		return resultado;
 	}
-
+	
 	@Override
 	public String toString() {
 		return this.getNombre();

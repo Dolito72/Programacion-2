@@ -48,18 +48,13 @@ public class SeguroSimple extends Seguro {
 	}
 
 	@Override
-	public int numeroPoliza() {
-		return numeroPoliza;
-	}
-
-	@Override
 	public double getCosto() {
 		return calculador.calcularCosto(this);
 	}
 
 	@Override
-	public ArrayList<Seguro> buscarSeguros(Filtro f) {
-		ArrayList<Seguro> resultado = new ArrayList<>();
+	public ArrayList<SeguroSimple> buscarSeguros(Filtro f) {
+		ArrayList<SeguroSimple> resultado = new ArrayList<>();
 			if (f.cumple(this))
 				resultado.add(this);
 		return resultado;
