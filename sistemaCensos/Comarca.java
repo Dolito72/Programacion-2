@@ -32,16 +32,6 @@ public class Comarca extends Elemento{
 	}
 
 	@Override
-	public double IngresoPerCapita() {
-		return this.IngresosTotales()/this.CantidatotalHabitantes();
-	}
-
-	@Override
-	public double DensidadPoblacion() {
-	return this.CantidatotalHabitantes()/this.SuperficieTotal();
-	}
-
-	@Override
 	public ArrayList<Comarca> ListadoComarcasCon(Filtro f) {
 		ArrayList<Comarca> resultado = new ArrayList<>();
 			if(f.cumple(this))

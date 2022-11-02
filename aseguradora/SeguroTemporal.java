@@ -70,10 +70,9 @@ public class SeguroTemporal extends Seguro {
 
 	@Override
 	public ArrayList<SeguroSimple> buscarSeguros(Filtro f) {
-		ArrayList<SeguroSimple> resultado = new ArrayList<>();
 		if (this.estaVigente())
-		   resultado.addAll(contenido.buscarSeguros(f));
-		return resultado;
+				return this.contenido.buscarSeguros(f);
+		return new ArrayList<>();
 	}
 
 	@Override

@@ -21,12 +21,17 @@ public abstract class Elemento{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public  double IngresoPerCapita(){
+		return this.IngresosTotales()/this.CantidatotalHabitantes();
+	}
+	public  double DensidadPoblacion(){
+		return this.CantidatotalHabitantes()/this.SuperficieTotal();
+	}
 
 	public abstract int CantidatotalHabitantes();
 	public abstract int SuperficieTotal();
 	public abstract int IngresosTotales();
-	public abstract double IngresoPerCapita();
-	public abstract double DensidadPoblacion();
 	public abstract ArrayList<Comarca> ListadoComarcasCon(Filtro f);
 	public ArrayList<Comarca> ListadoComarcasConOrdenado(Filtro f, Comparator comp){
 		ArrayList<Comarca> resultado = this.ListadoComarcasCon(f);
