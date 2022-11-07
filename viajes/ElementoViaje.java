@@ -10,20 +10,11 @@ import viajes.comparadores.*;
 
 public abstract class ElementoViaje {
 	protected int id;
-	protected LocalDate fechaPago;
-	protected String destino;
-	protected String origen;
-	protected int costo;
-	protected String alojamiento;
 	protected int cantidadPasajeros;
 	
-	public ElementoViaje(int id, LocalDate fechaPago, String destino, String origen, int costo, String alojamiento, int cantidadPasajeros){
+	public ElementoViaje(int id, int cantidadPasajeros){
 		this.id = id;
-		this.fechaPago = fechaPago;
-		this.destino = destino;
-		this.origen = origen;
-		this.costo = costo;
-		this.alojamiento = alojamiento;
+		
 		this.cantidadPasajeros = cantidadPasajeros;
 	}
 
@@ -43,7 +34,6 @@ public abstract class ElementoViaje {
 		this.cantidadPasajeros = cantidadPasajeros;
 	}
 
-	public abstract String getAlojamiento();
 	public abstract LocalDate getFechaPago();
 	public abstract String getDestino();
 	public abstract String getOrigen();

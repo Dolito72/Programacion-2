@@ -8,7 +8,8 @@ import sistemaComunicados.filtros.Filtro;
 
 public abstract class Elemento{
 	
-	public abstract void agregarNotificacion(Filtro f, Notificacion n);
+	public abstract void agregarNotificacion( Notificacion n);
+	public abstract ArrayList<Empleado> listar(Comparator comp) ;
 	public abstract int getCantidadEmpleados();
 	public abstract int getCantidadNotificaciones();
 	public abstract ArrayList<Empleado> listaEmpleados(Filtro f);

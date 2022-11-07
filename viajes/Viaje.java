@@ -2,15 +2,26 @@ package viajes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import java.util.Comparator;
+
 import viajes.filtros.Filtro;
 import viajes.comparadores.*;
 public class Viaje extends ElementoViaje{
-
-	public Viaje(int id, LocalDate fechaPago, String destino, String origen, int costo,String alojamiento, int cantidadPasajeros) {
-		super(id, fechaPago, destino, origen, id, alojamiento, cantidadPasajeros);
-		
+	protected LocalDate fechaPago;
+	protected String destino;
+	protected String origen;
+	protected int costo;
+	protected String alojamiento;
+	
+	
+	public Viaje(int id,int cantidadPasajeros, LocalDate fechaPago, String destino, String origen, int costo,
+			String alojamiento) {
+		super(id, cantidadPasajeros);
+		this.fechaPago = fechaPago;
+		this.destino = destino;
+		this.origen = origen;
+		this.costo = costo;
+		this.alojamiento = alojamiento;
 	}
 
 	@Override
@@ -40,7 +51,7 @@ public class Viaje extends ElementoViaje{
 		return costo;
 	}
 
-	@Override
+	
 	public String getAlojamiento() {
 		return alojamiento;
 	}

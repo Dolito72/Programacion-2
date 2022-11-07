@@ -1,6 +1,7 @@
 package sistemaComunicados;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import aseguradora.SeguroSimple;
 import sistemaComunicados.filtros.Filtro;
@@ -53,7 +54,7 @@ public class Empleado extends Elemento{
 	}
 
 	@Override
-	public void agregarNotificacion(Filtro f, Notificacion n) {
+	public void agregarNotificacion( Notificacion n) {
 		if (!this.notificaciones.contains(n))
 			this.notificaciones.add(n);
 	}
@@ -90,5 +91,9 @@ public class Empleado extends Elemento{
 		}
 	return resultado;
 }
-
+	public ArrayList<Empleado> listar(Comparator comp) {
+		ArrayList<Empleado> resultado = new ArrayList<>();
+		resultado.add(this);
+		return resultado;
+	}
 }

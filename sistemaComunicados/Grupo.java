@@ -1,29 +1,40 @@
 package sistemaComunicados;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import sistemaComunicados.filtros.Filtro;
 
 public class Grupo extends Elemento{
 	ArrayList<Elemento> empleados;
+	Filtro filtro;
 	
-	public Grupo(){
+	public Grupo(Filtro filtro){
 		this.empleados = new ArrayList<>();
+		this.filtro = filtro;
 	}
 	
+	public Filtro getFiltro() {
+		return filtro;
+	}
+
+	public void setFiltro(Filtro filtro) {
+		this.filtro = filtro;
+	}
+
 	public void agregarEmpleado(Elemento empleado){
 		this.empleados.add(empleado);
 	}
 
-	@Override
-	public void agregarNotificacion(Filtro f, Notificacion n) {
-		if (f.cumple(n)){
+	
+	public void agregarNotificacion(Notificacion n) {
+		if (filtro.cumple(n)){
 			for(Elemento e:empleados){
-				e.agregarNotificacion(f, n);
+				e.agregarNotificacion(n);
 			}
 		}
 	}
-
 	@Override
 	public int getCantidadEmpleados() {
 		int cantidad = 0;
@@ -40,6 +51,18 @@ public class Grupo extends Elemento{
 			cantidad += e.getCantidadNotificaciones();
 		}
 		return cantidad;
+	}
+
+	public ArrayList<Empleado> listar(Comparator comp) {
+		ArrayList<Empleado> resultado = new ArrayList<>();
+		for (Elemento e:empleados){
+			ArrayList<Empleado> listaHija = e.listar(comp);
+				for(Empleado l:listaHija)
+					if (!resultado.contains(l))
+					resultado.add(l);
+		}
+		Collections.sort(resultado, comp);
+		return resultado;
 	}
 
 	@Override

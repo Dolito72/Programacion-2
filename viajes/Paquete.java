@@ -10,9 +10,8 @@ import viajes.filtros.Filtro;
 public class Paquete extends ElementoViaje {
 	ArrayList<ElementoViaje> viajes;
 	
-	public Paquete(int id, LocalDate fechaPago, String destino, String origen, int costo, String alojamiento, 
-	int cantidadPasajeros){
-		super(id, fechaPago, destino, origen, costo, alojamiento, cantidadPasajeros);
+	public Paquete(int id,  int cantidadPasajeros){
+		super(id, cantidadPasajeros);
 		this.viajes = new ArrayList<>();
 	}
 	
@@ -31,7 +30,8 @@ public class Paquete extends ElementoViaje {
 			LocalDate fechaHija = e.getFechaPago();
 			if (fechaHija == null)
 				return null;
-			if (ultimaFechaPago == null || fechaHija.isAfter(ultimaFechaPago))
+			else 
+				if (ultimaFechaPago == null || fechaHija.isAfter(ultimaFechaPago))
 					ultimaFechaPago = fechaHija;
 		}
 		return ultimaFechaPago;
@@ -39,12 +39,19 @@ public class Paquete extends ElementoViaje {
 
 	@Override
 	public String getDestino() {
-		return viajes.get(viajes.size()-1).getDestino();
+		int size = viajes.size();
+			if(size>0)
+				return viajes.get(viajes.size()-1).getDestino();
+			else
+				return null;
 	}
 
 	@Override
 	public String getOrigen() {
-		return viajes.get(0).getOrigen();
+		if (!viajes.isEmpty())
+			return viajes.get(0).getOrigen();
+		else
+			return null;
 	}
 
 	@Override
@@ -53,11 +60,6 @@ public class Paquete extends ElementoViaje {
 		for (ElementoViaje v:viajes)
 			costoTotal += v.getCosto();
 		return costoTotal;
-	}
-
-	@Override
-	public String getAlojamiento() {
-		return alojamiento;
 	}
 
 	public  ArrayList<ElementoViaje> buscarViajes(Filtro f){

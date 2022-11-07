@@ -7,13 +7,14 @@ public class ViajePromo extends Viaje{
 	private LocalDate fin;
 	private double descuento;
 	
-	public ViajePromo(int id, LocalDate fechaPago, String destino, String origen, int costo, String alojamiento, int cantidadPasajeros) {
-		super(id, fechaPago, destino, origen, costo, alojamiento, cantidadPasajeros);
+	
+	public ViajePromo(int id, int cantidadPasajeros, LocalDate fechaPago, String destino, String origen,int costo, 
+			String alojamiento,LocalDate inicio,LocalDate fin, double descuento){
+		super( id, cantidadPasajeros,fechaPago, destino, origen, costo, alojamiento);
 		this.inicio = inicio;
 		this.fin = fin;
 		this.descuento = descuento;
 	}
-	
 
 	public LocalDate getInicio() {
 		return inicio;
@@ -44,13 +45,13 @@ public class ViajePromo extends Viaje{
 			return true;
 		else
 			return false;
-		
 	}
 	@Override
 	public int getCosto() {
-		if (this.entreFechas(inicio, fin))
-			return (int) (this.costo - this.costo * this.getDescuento() / 100);
-		else
+		if(this.getFechaPago()!=null)
+			if (this.entreFechas(inicio, fin))
+				return (int) (this.costo - this.costo * this.getDescuento() / 100);
+		
 		return costo;
 	}
 	

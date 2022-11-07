@@ -4,10 +4,13 @@ import viajes.ElementoViaje;
 import java.time.LocalDate;
 
 public class FiltroPorFecha extends Filtro{
+	private LocalDate fechaDada;
 	@Override
 	public boolean cumple(ElementoViaje viaje) {
-		return viaje.getFechaPago().equals(LocalDate.of(2022, 5, 25));
-	
+		if(viaje.getFechaPago()!=null)
+			return viaje.getFechaPago().equals(fechaDada);
+		else
+			return false;
 	}
 
 }
