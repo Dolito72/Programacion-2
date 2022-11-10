@@ -6,7 +6,6 @@ import java.util.Comparator;
 
 import complejoHotelero.filtros.Filtro;
 
-
 public class Habitacion extends Elemento {
 	private ArrayList<String> caracteristicas;
 	private int metros;
@@ -15,9 +14,9 @@ public class Habitacion extends Elemento {
 	private Turista turista;
 	private boolean aceptaMascota;
 	
-	public Habitacion (Comparator<Habitacion> comparador,int metros, int cantCamas, LocalDate fechaOcupacion, Turista turista,
+	public Habitacion (int metros, int cantCamas, LocalDate fechaOcupacion, Turista turista,
 			boolean aceptaMascota){
-		super(comparador);
+	
 		this.caracteristicas = new ArrayList<String>();
 		this.metros = metros;
 		this.cantCamas = cantCamas;
@@ -26,15 +25,14 @@ public class Habitacion extends Elemento {
 		this.aceptaMascota = aceptaMascota;
 	}
 	
+	
 	public boolean isAceptaMascota() {
 		return aceptaMascota;
 	}
 
-
 	public void setAceptaMascota(boolean aceptaMascota) {
 		this.aceptaMascota = aceptaMascota;
 	}
-
 
 	public int getMetros() {
 		return metros;
@@ -65,7 +63,9 @@ public class Habitacion extends Elemento {
 	}
 
 	public void setTurista(Turista turista) {
-		this.turista = turista;
+		if(!this.estaDisponible() && ((Turista) turista).cumpleRequerimiento(this)){
+			this.turista = turista;
+		}
 	}
 
 	public void agregarCaracteristica(String c){
@@ -92,8 +92,8 @@ public class Habitacion extends Elemento {
 	}
 
 	@Override
-	public int cantidadHab(Filtro f) {
-		if(f.cumple(this))
+	public int cantidadHab(Turista t) {
+		if(t.cumpleRequerimiento(this))
 			return 1;
 		else
 			return 0;
@@ -105,9 +105,9 @@ public class Habitacion extends Elemento {
 	}
 
 	@Override
-	public ArrayList<Habitacion> listadoHabitacionesCumplen(Filtro f) {
+	public ArrayList<Habitacion> listadoHabitacionesCumplen(Turista t) {
 		ArrayList<Habitacion> resultado = new ArrayList<>();
-		if (this.estaDisponible() && (f.cumple(this)))
+		if (this.estaDisponible() && (t.cumpleRequerimiento(this)))
 			resultado.add(this);
 		return null;
 	}

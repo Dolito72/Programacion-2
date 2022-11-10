@@ -50,7 +50,6 @@ public class Seccion extends Elemento {
 				for(String s:aux)
 					if(!resultado.contains(s))
 					resultado.add(s);
-				
 			}
 		return resultado;
 	}

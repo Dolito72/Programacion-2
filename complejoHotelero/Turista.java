@@ -1,14 +1,26 @@
 package complejoHotelero;
 
+import complejoHotelero.filtros.Filtro;
+
 public class Turista {
 	private String nombre;
 	private String ciudad;
 	private int edad;
+	private Filtro requerimiento;
 	
-	public Turista (String nombre, String ciudad, int edad){
+	public Turista (String nombre, String ciudad, int edad, Filtro requerimiento){
 		this.nombre = nombre;
 		this.ciudad = ciudad;
 		this.edad = edad;
+		this.requerimiento = requerimiento;
+	}
+	
+	public Filtro getRequerimiento() {
+		return requerimiento;
+	}
+
+	public void setRequerimiento(Filtro requerimiento) {
+		this.requerimiento = requerimiento;
 	}
 
 	public String getNombre() {
@@ -34,6 +46,11 @@ public class Turista {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+	
+	public boolean cumpleRequerimiento(Habitacion h){
+		return this.getRequerimiento().cumple(h);
+	}
+
 	
 	
 }

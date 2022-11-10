@@ -8,9 +8,7 @@ import complejoHotelero.filtros.Filtro;
 public class Hotel extends Elemento{
 	private ArrayList<Elemento> elementos;
 	
-	
-	public Hotel(Comparator<Habitacion> comparador){
-		super(comparador);
+	public Hotel(){
 		this.elementos = new ArrayList<>();
 	}
 	
@@ -26,10 +24,10 @@ public class Hotel extends Elemento{
 	}
 
 	@Override
-	public int cantidadHab(Filtro f) {
+	public int cantidadHab(Turista t) {
 		int cantidadTotal = 0;
 		for(Elemento e:elementos)
-			cantidadTotal += (e.cantidadHab(f));
+			cantidadTotal += (e.cantidadHab(t));
 		return cantidadTotal;
 	}
 
@@ -42,10 +40,10 @@ public class Hotel extends Elemento{
 	}
 
 	@Override
-	public ArrayList<Habitacion> listadoHabitacionesCumplen(Filtro f) {
+	public ArrayList<Habitacion> listadoHabitacionesCumplen(Turista t) {
 		ArrayList<Habitacion> resultado = new ArrayList<>();
 		for (Elemento e:elementos){
-			ArrayList<Habitacion> resHijo = e.listadoHabitacionesCumplen(f);
+			ArrayList<Habitacion> resHijo = e.listadoHabitacionesCumplen(t);
 			resultado.addAll(resHijo);
 		}
 		return resultado;
